@@ -5,11 +5,14 @@ import java.net.*;
 
 public class Servidor {
 
-	static int numeroPremiado = 12345;
-	static int numeroRecibido = 1;
+
 
 	public static void main(String[] args) {
 		try {
+			
+			int numeroPremiado = (int) Math.ceil(Math.random() * 99999);
+			int numeroRecibido = 1;
+			
 			System.out.println("Se crea el socket Servidor");
 			ServerSocket serverSocket = new ServerSocket();
 			System.out.println("Realiza el bind");
