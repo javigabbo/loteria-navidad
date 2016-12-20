@@ -26,17 +26,65 @@ public class Servidor {
 				is.read(mensaje);
 				String msjRecibido = new String(mensaje);
 				numeroRecibido = Integer.parseInt(msjRecibido.trim());
-				System.out.println("Numero recibido = " + numeroRecibido);
+				System.out.println("Numero recibido = " + numeroRecibido + "\n");
 
 				if (numeroRecibido == numeroPremiado) {
 					OutputStream os = newSocket.getOutputStream();
 					String resultado = "¡Premio Gordo!\n";
 					os.write(resultado.getBytes());
-				} else{
+					
+				}else if (numeroRecibido%1000 == numeroPremiado%1000){
+					OutputStream os = newSocket.getOutputStream();
+					String resultado = "Centenas\n";
+					os.write(resultado.getBytes());
+					
+				}else if(numeroRecibido%100 == numeroPremiado%100){
+					OutputStream os = newSocket.getOutputStream();
+					String resultado = "Dos últimas cifras\n";
+					os.write(resultado.getBytes());
+					
+				}else if(numeroRecibido%10 == numeroPremiado%10){
+					OutputStream os = newSocket.getOutputStream();
+					String resultado = "Reintegro\n";
+					os.write(resultado.getBytes());
+					
+				}else if(numeroRecibido+1 == numeroPremiado){
+					OutputStream os = newSocket.getOutputStream();
+					String resultado = "Número anterior\n";
+					os.write(resultado.getBytes());
+					
+				}else if(numeroRecibido-1 == numeroPremiado){
+					OutputStream os = newSocket.getOutputStream();
+					String resultado = "Número posterior\n";
+					os.write(resultado.getBytes());
+					
+				}else if(numeroRecibido == 0){
+					
+				}else if(numeroRecibido != numeroPremiado || 
+						numeroRecibido%1000 != numeroPremiado%1000 || 
+						numeroRecibido%100 != numeroPremiado%100 || 
+						numeroRecibido%10 == numeroPremiado%10){
+					
+					OutputStream os = newSocket.getOutputStream();
+					String resultado = "Sin premio.\n";
+					os.write(resultado.getBytes());
+					
+				}
+				
+				
+				/*
+				
+				 	(numeroRecibido != numeroPremiado) &&
+					(numeroRecibido%1000 != numeroPremiado%1000) &&
+					(numeroRecibido%100 != numeroPremiado%100) &&
+					(numeroRecibido%10 == numeroPremiado%10)
+
+				 * 
+				 * else{
 					OutputStream os = newSocket.getOutputStream();
 					String resultado = "Mala suerte.\n";
 					os.write(resultado.getBytes());
-				}
+				}*/
 
 			}
 

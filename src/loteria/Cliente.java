@@ -34,7 +34,7 @@ public class Cliente {
 				InputStream is = clientSocket.getInputStream();
 				byte[] resultado = new byte[100];
 				is.read(resultado);
-				System.out.println(new String(resultado)+"\n");
+				System.out.println(new String(resultado));
 			}
 			
 
